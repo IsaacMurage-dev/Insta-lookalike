@@ -1,0 +1,22 @@
+{%extends 'main/baseprofile.html'%}
+{% load bootstrap3 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css'%}">
+{% endblock %}
+{% block content %}
+<div class="container">
+<h1 style="color:rgb(0, 17, 255);">Add Image</h1>
+
+ <form  action="{%url 'Image'%}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    {% bootstrap_form form%}
+    <input type="submit" class="btn btn-info btn-lg" value="Post">
+  </form>
+
+
+</div>
+
+{%endblock%}

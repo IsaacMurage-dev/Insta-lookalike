@@ -1,0 +1,50 @@
+{%extends 'main/base.html'%}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block styles %}
+{{ block.super }}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/index.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+{% for profile in profile_info %}
+<p>{{profile.name}}</p>
+{% if profile.profile_image %}
+<img src="{{profile.profile_image.url}}" class="img-responsive"style="width:20% ;height:20%; border-radius:50%;" alt="Image">
+{% endif %}
+<br>
+<p>{{profile.Bio}}</p>
+
+
+{% endfor %}
+<hr>
+</div>
+<div class="container">
+  {% for images in images_prof %}
+  <div class="col-xs-4 col-sm-4 col-lg-4">
+
+  {% if  images.image_path %}
+
+  <a href="{%url 'Details' images.id %}" class=""><img src="{{images.image_path.url}}" class="img-thumbnail" ></a>
+</div>
+
+
+   {% else %}
+ </div>
+ 
+   <div class="row">
+   <h3>You haven't uploaded any images</h3>
+ </div>
+ {% endif %}
+
+
+ {% endfor %}
+{% endblock%}
+{% block scripts %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       {% bootstrap_javascript %}
+      {% endblock %}

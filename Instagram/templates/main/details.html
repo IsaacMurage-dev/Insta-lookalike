@@ -1,0 +1,76 @@
+{%extends 'main/base.html'%}
+{% load bootstrap3 %}
+{% load static %}
+
+
+{% block styles %}
+{{ block.super }}
+{% bootstrap_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/details.css'%}">
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row">
+ 
+    <div class="col-md-8">
+      <div class="card">
+      <div class="top">
+
+        {%for img in images_profile%}
+        <!-- <img src="{{img.profile.url}}"style="width:15% ;height:15%; border-radius:50%"> -->
+      <h3 style="float:right; color:rgb(61, 6, 212);"><a href="{%url 'Profile' img.profile.id %}"style="color:blueviolet;"> {{img.profile.name}}</a></h3>
+        {% endfor %}
+      </div>
+      <img src="{{image_details.image_path.url}}" class="" alt="" style="width:100%">
+
+
+
+       <!--div class="row"-->
+         <!--div class="col-sm-6"-->
+        <div class="center">
+        <h4><a href="{%url 'Comment' image_details.id %}"style="color:blueviolet;"><i class="fa fa-comments-o" style="font-size:40px; color:rgb(21, 182, 231);"></i>Add comment</a></h4>
+        <!--/div-->
+        <!--div class="col-sm-6"-->
+          <h4 style="color:rgb(9, 29, 212);">{{total_likes}} Likes</h4>
+        <!--if is liked is true then the dislike button is presented and the user is
+      ommitted from the db and the is_liked is set to false-->
+
+
+            {%if is_liked %}
+            <!--button type="submit" name="image_details_id"value="{{image_details.id}}" class=""--><a href="{%url 'like_post' image_details.id%}" style="color:white;"><i class="fa fa-heart" style="font-size:48px;color:red"></i></a><!--/button-->
+            {%else %}
+            <!--button type="submit" name="image_details_id"value="{{image_details.id}}" class="btn btn-primary"--><a href="{%url 'like_post' image_details.id%}" style="color:black;"><i class="fa fa-heart-o" style="font-size:36px;"></i></a><!--/button-->
+           {% endif %}
+
+
+
+      <!--/div-->
+    </div>
+
+</div>
+    </div>
+
+
+
+
+    <div class="col-md-4">
+      <div class="card" >
+      <h3 class="text-center"style="width:100%;color:rgb(17, 218, 218);">{{image_details.name}}</h3>
+      <p class="text-center" style="color:rgb(0, 4, 255);">{{image_details.image_caption}}</p>
+
+      {%for comment in comment_details %}
+      <div class="alert alert-info" role="alert" >
+      <p class="text-center">{{comment.comment}}</p>
+    </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       {% bootstrap_javascript %}
+      {% endblock %}

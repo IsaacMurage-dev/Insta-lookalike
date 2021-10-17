@@ -1,0 +1,47 @@
+{%extends 'main/baseprofile.html'%}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block styles %}
+{{ block.super }}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/home.css'%}">
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="row">
+    {% if searched_profiles %}
+      <h2>Found {{ searched_profiles|length }} result of the user searched </h2>
+    {% else %}
+      <h2> Found 0 users </h2>
+    {% endif %}
+
+  </div>
+</div>
+<div class="container">
+
+
+  {% if searched_profiles %}
+    {% for profile in searched_profiles %}
+    <div class="alert alert-info" role="alert">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{profile.profile_image.url}}" class="img-responsive"style="width:35% ;height:35%; border-radius:50%;" alt="Image">
+      </div>
+      <div class="col-md-8 ">
+          <h1><a href="{%url 'Profile' profile.id %}">{{profile.name}}</a></h1>
+      </div>
+
+    </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+
+
+
+
+{% endblock %}
+{% block scripts %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       {% bootstrap_javascript %}
+      {% endblock %}

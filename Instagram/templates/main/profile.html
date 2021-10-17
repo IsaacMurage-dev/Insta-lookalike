@@ -1,0 +1,86 @@
+{%extends 'main/base.html'%}
+{% load bootstrap3 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/details.css'%}">
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="row">
+  <div class="col-sm-8">
+    <h3>{{profile_info.name}}</h3>
+      <img src="{{profile_info.url}}" class="img-circle"style="width:35%;height:35%;" alt="Image">
+      <br>
+        <p >{{profile_info.Bio}}</p>
+
+      {%if is_follow %}
+      <button type="submit"name=""class="btn btn-info"><a href="{%url 'Follow' profile_info.id %}" style="color:white;">Unfollow</a></button>
+      {% else %}
+      <button type="submit"name=""class="btn btn-info"><a href="{%url 'Follow' profile_info.id %}" style="color:white;">Follow</a></button>
+     {% endif %}
+    </div>
+
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-xs-4">
+        <h3>Post</h3>
+        <h4 ><span class="badge"style=" background-color:blue;font-size:27px;">{{ images|length}} </span></h4>
+      </div>
+      <div class="col-xs-4">
+        <h3>Following</h3>
+          <h4><span class="badge"style=" background-color:blue;font-size:27px;">{{following|length}}</span></h4>
+      </div>
+
+      <div class="col-xs-4">
+        <h3>Followers</h3>
+        <h4><span class="badge"style=" background-color:blue;font-size:27px;">{{followers|length}}</span></h4>
+      </div>
+      <nav aria-label="...">
+      <ul class="pager">
+      <li class="previous"><a href="#"><p class="text-center" style="color:blueviolet;width:280px;">Edit Profile</p></a></li>
+    </ul>
+  </nav>
+
+  </div>
+
+   </div>
+ </div>
+</div>
+   <hr>
+
+    <div class="container">
+
+
+      
+      <div class="row row-flex">
+       {%for image in images%}
+       <div class="col-md-4 col-sm-6 col-xs-12">
+
+      {% if image.image_path %}
+
+      <a href="{%url 'Details' image.id%}" class=""><img src="{{image.image_path.url}}" class="img-responsive" ></a>
+    </div>
+
+
+       {% else %}
+
+
+     </div>
+   </div>
+
+       <div class="row">
+       <h3>You haven't uploaded any images</h3>
+       </div>
+     {% endif %}
+     {% endfor %}
+
+
+
+
+
+
+
+
+
+{%endblock%}
