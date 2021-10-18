@@ -1,4 +1,4 @@
-## Art-Gallery
+## Instagram
 
 ## Author
 Murage Isaac
