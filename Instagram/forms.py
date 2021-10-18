@@ -23,6 +23,10 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
         fields = ['name','Bio','profile_image']
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user']        
 class ImageForm(forms.ModelForm):
     class Meta:
         model=Image
@@ -31,3 +35,4 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model=Comment
         fields = ['comment']
+       
