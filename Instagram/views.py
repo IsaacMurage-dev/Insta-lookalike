@@ -63,6 +63,18 @@ def first_profile(request,profile_id):
     following=follows.follow.all()
     followers=follows.user.who_following.all()
     return render(request,'main/profile.html',{"profile_info":profile_info,"images":images,"current_id":current_id,"is_follow":is_follow,"total_following":follows.total_following(),"following":following,"followers":followers})
+def edit_profile(request):
+    current_user=request.user
+    profiles=Profile.get_profile()
+    for profile in profiles:
+        form=EditProfileForm(request.POST,request.FILES)
+        profile_instance=Profile.objects.get(id=request.user.id)
+        if request.method == 'POST':
+            if form.is_valid():
+                image=form.save(commit=False)
+                image.profile=profile_instance
+                image.save()
+                return redirect(first_profile,request.user.id)
 
 def add_image(request):
     current_user=request.user
