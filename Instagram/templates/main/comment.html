@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-<h1 style="color:rgb(84, 121, 224);">Leave a Comment </h1>
+<h1 style="color:rgb(84, 121, 224);">Comment below</h1>
 
  <form  action="{%url 'Comment' current_image.id%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
