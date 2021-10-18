@@ -36,7 +36,7 @@ Murage Isaac
 * PostgreSQL
 
 ## Deployment
-This is the live link to the project: <a href=""> Art-Gallery</a>
+This is the live link to the project: <a href="">Instagram</a>
 
 ### License
 This project is under [MIT](https://choosealicense.com/licenses/mit/) &COPY; 2021 All Rights Reserved.
