@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm,ImageForm,SignUpForm,UserForm,CommentForm
+from .forms import ProfileForm,ImageForm,SignUpForm,UserForm,CommentForm,EditProfileForm
 from .models import Profile,Image,Comment
 from django.http import Http404,HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm

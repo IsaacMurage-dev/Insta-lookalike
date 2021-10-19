@@ -2,12 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+# cloudinary
+from cloudinary.models import CloudinaryField
 # from django.core.urlresolvers import reverse
 # Create your models here.
 class Profile(models.Model):
     name=models.CharField(max_length=30)
     Bio= models.TextField()
-    profile_image=models.ImageField(upload_to = 'profiles/',blank=True)
+    profile_image=CloudinaryField('images')
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     follow=models.ManyToManyField(User,related_name='who_following',blank=True)
     def __str__(self):
@@ -36,7 +38,7 @@ class Profile(models.Model):
 class Image(models.Model):
     name=models.CharField(max_length=20)
     image_caption=models.CharField(max_length=1000,blank=True)
-    image_path=models.ImageField(upload_to='images/',blank=True)
+    image_path=CloudinaryField('images')
     profile=models.ForeignKey(Profile,null=True,on_delete=models.CASCADE)
     likes=models.ManyToManyField(User,related_name='likes' ,blank=True)
     def save_image(self):
