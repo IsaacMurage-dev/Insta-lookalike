@@ -4,6 +4,7 @@
 Murage Isaac
 
 ## Description
+This is an Instagram lookalike media app. It requires a user to register and login to use. A user can post images with captions, comment on other images or like. A user can also follow or unfollow other users and see their timeline posts.
 
 
 ## Setup and installations
@@ -36,7 +37,7 @@ Murage Isaac
 * PostgreSQL
 
 ## Deployment
-This is the live link to the project: <a href="">Instagram</a>
+This is the live link to the project: <a href="https://cryptic-plains-52648.herokuapp.com/">Instagram</a>
 
 ### License
 This project is under [MIT](https://choosealicense.com/licenses/mit/) &COPY; 2021 All Rights Reserved.
